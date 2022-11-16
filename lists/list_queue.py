@@ -11,28 +11,38 @@ def enQueue(value):
     else:
         return "Full"
     #endif
-#end procedure
+#end function
 
 def deQueue(value=None):
     if value == None:
-        queue.pop() ### You need to retuen the popped value
+        return_value = queue.pop(0) ### You need to retuen the popped value <-- FIXED
     else:
-        queue.pop(queue.index(value))
+        return_value = queue.pop(queue.index(value))
+    return return_value
     #endif
 #end function
-    
+
 
 def isEmpty():
     if len(queue) != 0:
         return False
     #endif
     return True
+#end function <-- Added after fix
 
 def isFull():
     if len(queue) == 5:
         return True
     #endif
     return False
+#end function 
+
+#New test cases added, to ensure the queue works
 
 enQueue("Hello")
+print(queue)
+enQueue("Elliot")
+print(deQueue())
+print(deQueue("Elliot"))
+print(f"Queue Full: {isFull()}, Queue Empty: {isEmpty()}, Queue Size: {len(queue)}")
 print(queue)
