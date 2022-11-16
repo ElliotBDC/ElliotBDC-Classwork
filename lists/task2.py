@@ -19,4 +19,4 @@ for index in range(0, len(list1)):
 		list2.append(item)
 	#endif
 #next index
-print("New list containing values between 80 and 100: " + list2)
+print("New list containing values between 80 and 100: " + str(list2)) #Fix<-- can only concatenate str + str, therefore had to convert list2 to a str using str()
