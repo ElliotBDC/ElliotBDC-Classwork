@@ -64,6 +64,19 @@ class LinkedList:
                         break
                 self.listNodes[i].pointer = self.listNodes[index].pointer
 
+    def printAlphabetically(self):
+        endLoop = True
+        self. pointers = []
+        self.pointers = [1, 5, 5, 4, -1, 3]
+        self.pointer = self.start
+        self.count = 1
+        while endLoop == True:
+            if self.pointer != -1:
+                print(f"Position: {self.count}:", self.listNodes[self.pointer].name)
+                self.pointer = self.pointers[self.pointer]
+                self.count = self.count + 1
+            else:
+                endLoop = False
 
 class Node:
     def __init__(self, name, pointer):
@@ -98,5 +111,6 @@ for i in range(0, len(newLinked.listNodes)):
     freespace = 6 - len(newLinked.listNodes[i].name)
     print(str(i) + "    --    " + newLinked.listNodes[i].name +" "*freespace + "    --    " + str(newLinked.listNodes[i].pointer))
 
-
+print(" ")
+newLinked.printAlphabetically()
 
