@@ -4,7 +4,7 @@ s = ""
 for c in myString:
     if 64 < ord(c) < 91:
         s = s + c
-    stack.append(c)
+        stack.append(c)
     #end if
 #next c
 
