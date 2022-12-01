@@ -23,10 +23,15 @@ class LinkedList:
     def findNextFree(self):
         for i in range(0, len(self.listNodes)):
             if self.listNodes[i] is None:
-                self.nextFree = i
+                #if self.nextFree != i-1:
+                 #   self.nextFree = i
                 break
             elif i == len(self.listNodes)-1:
-                self.nextFree = i+1
+                if self.nextFree == i-1:
+                    #do nothing
+                    ...
+                else:
+                    self.nextFree = i+1
         return self.nextFree
 
     def findNewPos(self, newNode):
@@ -63,6 +68,8 @@ class LinkedList:
                 for i in range(0, len(self.listNodes)):
                     if self.listNodes[i].pointer == index:
                         break
+                if self.nextFree > index:
+                    self.nextFree = index
                 self.listNodes[i].setParent(self.listNodes[index].getParent() ,self.listNodes[index].pointer)
 
     def printAlphabetically(self):
@@ -74,6 +81,8 @@ class LinkedList:
                 print(newNode)
                 break
             print(newNode)
+            
+#TODO# Continue creating the reverse function below
 
     def reverse(self):
         ...
@@ -112,6 +121,9 @@ newLinked.add("Oliver")
 
 newLinked.remove("Haider")  # Haider is not deleted from the linked list, however he is skipped.
 
+newLinked.add("Matthew") # Replaces Haider in the list
+
+newLinked.remove("April")
 print(f"NextFree: {newLinked.nextFree}, Start: {newLinked.start}")
 print("-------|----------|---------")
 print("Index  --  Name  --  Pointer")
@@ -122,4 +134,5 @@ for i in range(0, len(newLinked.listNodes)):
 
 print(" ")
 newLinked.printAlphabetically()
+
 
