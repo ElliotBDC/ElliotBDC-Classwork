@@ -74,15 +74,9 @@ class LinkedList:
 
     def printAlphabetically(self):
         newNode = self.listNodes[self.start]
-        print(newNode)
         for index in range(0, len(self.listNodes)-1):
-            newNode = newNode.getParent()
-            if newNode.getParent() == False:
-                print(newNode)
-                break
             print(newNode)
-            
-#TODO# Continue creating the reverse function below
+            newNode = self.listNodes[newNode.pointer]
 
     def reverse(self):
         ...
@@ -94,9 +88,6 @@ class Node:
 
     def __repr__(self) -> str:
         return f'( {self.name} --> {self.pointer} )'
-
-    # def setPointer(self, pointer):
-    #   self.pointer = pointer
 
     def getPointer(self):
         return self.pointer
@@ -134,5 +125,4 @@ for i in range(0, len(newLinked.listNodes)):
 
 print(" ")
 newLinked.printAlphabetically()
-
 
