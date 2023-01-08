@@ -5,3 +5,5 @@ def deQueue():
         Tmp = kBuffer[front]
         kBuffer.pop(front)
     return Tmp
+    #endif
+ #endfunction
