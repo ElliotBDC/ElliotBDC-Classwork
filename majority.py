@@ -45,29 +45,29 @@ test5 = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', '
 def solve_majority(aStack):
     stack_two = []
     stack_three = []
-    while len(aStack) != 0:
-        element = aStack.pop() ### SRC - No need for a variable here...
-        if len(stack_two) == 0 or stack_two[-1] == element:
-            stack_two.append(element)
-        else:
-            element_two = stack_two.pop() ### SRC - or here
-            stack_three.append(element_two)
-            stack_three.append(element)
-    #Repeating majority check to make sure there isnt a string of characters at the end of the testing case
+    first_pass(aStack, stack_two, stack_three)
+    second_pass(stack_three, stack_two, aStack)
+    return stack_two
     ### SRC - You should try and avoid repeating code. Try using two functions here,
     ### one to carry out the algorithm, with three stacks as parameters, and one driving
     ### function to repeat the first function again with different arguments (if necessary)
-    stack_three = stack_three + stack_two ### SRC - No need to join stacks together - think about it!
-    stack_two = []
-    while len(stack_three) != 0:
-        element = stack_three.pop()
-        if len(stack_two) == 0 or stack_two[-1] == element:
-            stack_two.append(element)
+
+def first_pass(stack_mix, stack_two, stack_three):
+    while len(stack_mix) != 0:
+        ### SRC - No need for a variable here...
+        if len(stack_two) == 0 or stack_two[-1] == stack_mix[-1]:
+            stack_two.append(stack_mix.pop())
         else:
-            element_two = stack_two.pop()
-            aStack.append(element_two)
-            aStack.append(element)
+            ### SRC - or here
+            stack_three.append(stack_two.pop())
+            stack_three.append(stack_mix.pop())
     return stack_two
+
+def second_pass(stack_three, stack_two, stack_mix):
+    if len(stack_two) == 0:
+        return
+    first_pass(stack_three, stack_two, stack_mix)
+    return
 
 if solve_majority(test1)[0] == "A":
     print("✓ Test 1 Passed")
@@ -92,5 +92,4 @@ else:
 if len(solve_majority(test5)) == 0:
     print("✓ Test 5 Passed")
 else:
-    print("#### Test 5 failed")        
-        
+    print("#### Test 5 failed")   
