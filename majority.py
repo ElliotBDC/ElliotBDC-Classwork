@@ -1,3 +1,4 @@
+### SRC - This is a great effort, I've made some cooments below for you to look at.
 #Test1: 2 Candidates A has majority
 
 test1 = ['B', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'A', 'B', 'A', 'A', 'B', 'A', 'B', 'A', 'A', 'B', 'B', 'A', 'B', 'A', 'A', 'B', 'B', 'A', 'A', 'B', 'A', 'B', 'B', 
@@ -45,15 +46,18 @@ def solve_majority(aStack):
     stack_two = []
     stack_three = []
     while len(aStack) != 0:
-        element = aStack.pop()
+        element = aStack.pop() ### SRC - No need for a variable here...
         if len(stack_two) == 0 or stack_two[-1] == element:
             stack_two.append(element)
         else:
-            element_two = stack_two.pop()
+            element_two = stack_two.pop() ### SRC - or here
             stack_three.append(element_two)
             stack_three.append(element)
     #Repeating majority check to make sure there isnt a string of characters at the end of the testing case
-    stack_three = stack_three + stack_two
+    ### SRC - You should try and avoid repeating code. Try using two functions here,
+    ### one to carry out the algorithm, with three stacks as parameters, and one driving
+    ### function to repeat the first function again with different arguments (if necessary)
+    stack_three = stack_three + stack_two ### SRC - No need to join stacks together - think about it!
     stack_two = []
     while len(stack_three) != 0:
         element = stack_three.pop()
